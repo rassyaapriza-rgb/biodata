@@ -1,328 +1,278 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Muhammad Rassya Apriza</title>
-    <!-- Framework & Icons -->
+    <title>Comic Portfolio | Rassya Apriza</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
-        
-        /* Base Styles */
+        :root {
+            --comic-yellow: #ffde00;
+            --comic-red: #ff0000;
+            --comic-blue: #29a0ff;
+            --comic-cream: #fbf9f3;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #f8fafc;
-            color: #1e293b;
-            margin: 0;
-            scroll-behavior: smooth;
+            font-family: 'Comic Neue', cursive;
+            background-color: var(--comic-cream);
+            background-image: radial-gradient(#ccc1a3 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+            overflow-x: hidden;
         }
 
-        /* Hero & Navigation */
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        h1, h2, h3, .comic-font {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
         }
 
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        .comic-border {
+            border: 4px solid black;
+            box-shadow: 8px 8px 0px 0px black;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: white;
         }
 
-        /* Profile & Cards */
-        .profile-img {
-            border: 6px solid white;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            object-position: center 20%;
+        .comic-border:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px 0px black;
         }
 
-        .info-row {
-            display: flex;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-        }
-        .info-row:last-child { border-bottom: none; }
-
-        /* Timeline Education */
-        .timeline-dot {
-            position: relative;
-        }
-
-        .timeline-dot::before {
-            content: '';
-            position: absolute;
-            left: -33px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #3b82f6;
-            border: 3px solid #dbeafe;
-            z-index: 10;
-        }
-
-        .education-card {
-            transition: all 0.3s ease;
-            border-left: 2px solid #e2e8f0;
-        }
-
-        .education-card:hover {
-            border-left-color: #3b82f6;
+        .nav-item {
             background: white;
-            transform: translateX(5px);
+            border: 3px solid black;
+            padding: 6px 18px;
+            margin: 0 4px;
+            font-weight: 900;
+            transform: skew(-12deg);
+            box-shadow: 4px 4px 0px 0px black;
+            transition: all 0.1s ease;
         }
 
-        /* Story Section */
-        .story-img-container {
+        .nav-item:hover {
+            background: var(--comic-yellow);
+            transform: skew(-12deg) translate(-2px, -2px);
+        }
+
+        .story-panel {
+            background: white;
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            box-shadow: 6px 6px 0px 0px black;
             overflow: hidden;
-            border-radius: 1.5rem;
-            aspect-ratio: 4/3;
-            background: #e2e8f0;
         }
 
-        .story-img-container img {
+        .story-image-container {
+            height:550px;
+            border-bottom: 5px solid black;
+            overflow: hidden;
+        }
+
+        .story-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            filter: none;
+            transition: all 0.5s ease;
         }
 
-        .story-img-container:hover img {
+        .story-panel:hover .story-img {
+            filter: none;
             transform: scale(1.05);
+        }
+
+        .text-overlay-box {
+            padding: 1.5rem;
+        }
+
+        .school-link:hover {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+
+        #skill {
+            background-color: #1d4ed8;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.15) 0,
+                rgba(255, 255, 255, 0.15) 15px,
+                transparent 15px,
+                transparent 35px
+            );
+            border-top: 8px solid black;
+            border-bottom: 8px solid black;
+        }
+
+        #pendidikan {
+            background-color: white;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent),
+                              linear-gradient(90deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            border-bottom: 8px solid black;
+        }
+
+        #cerita {
+            background-color: #0f172a;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.1) 0,
+                rgba(255, 255, 255, 0.1) 15px,
+                transparent 15px,
+                transparent 35px
+            );
+            border-top: 8px solid black;
+            border-bottom: 8px solid black;
         }
     </style>
 </head>
-<body>
+<body class="text-black">
 
-    <!-- Header / Navigasi -->
-    <nav class="fixed top-0 w-full z-50 glass-effect py-4 px-6 flex justify-center items-center">
-        <div class="space-x-6 text-sm font-semibold opacity-70">
-            <a href="#about" class="hover:text-blue-600 transition">Profil</a>
-            <a href="#skills" class="hover:text-blue-600 transition">Kemahiran</a>
-            <a href="#education" class="hover:text-blue-600 transition">Pendidikan</a>
-            <a href="#story" class="hover:text-blue-600 transition">Cerita</a>
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-bold bg-black text-white px-5 py-1.5 transform -rotate-2 border-2 border-yellow-400 inline-block tracking-wider comic-font shadow-[4px_4px_0px_0px_rgba(255,222,0,1)]">
+                RASSYA APRIZA
+            </div>
+            
+            <div class="hidden md:flex items-center">
+                <a href="#profile" class="nav-item">PROFILE</a>
+                <a href="#skill" class="nav-item">SKILL</a>
+                <a href="#pendidikan" class="nav-item">EDUCATION</a>
+                <a href="#cerita" class="nav-item">STORY</a>
+                <button id="music-btn" class="nav-item bg-purple-600 text-white border-2 border-black hover:bg-purple-500">SOUND: 🔇</button>
+                <a href="#kontak" class="nav-item bg-red-600 text-white hover:bg-red-500">CONTACT</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden px-4 py-2 border-4 border-black font-extrabold bg-yellow-400">MENU</button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden flex flex-col items-center bg-yellow-400 border-t-4 border-black py-6 space-y-4 md:hidden">
+            <a href="#profile" class="font-bold text-lg hover:underline">PROFILE</a>
+            <a href="#skill" class="font-bold text-lg hover:underline">SKILL</a>
+            <a href="#pendidikan" class="font-bold text-lg hover:underline">EDUCATION</a>
+            <a href="#cerita" class="font-bold text-lg hover:underline">STORY</a>
+            <button id="music-btn-mobile" class="font-bold text-lg hover:underline">SOUND: 🔇</button>
+            <a href="#kontak" class="font-bold text-lg bg-red-600 text-white px-6 py-1.5 border-2 border-black transform -rotate-2">CONTACT</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-gradient pt-32 pb-24 px-6 text-white text-center relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+    <!-- Audio Element -->
+    <audio id="bg-audio" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
 
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="mb-8 inline-block">
-                <img src="rassya.jpeg" id="user-profile-img" alt="Muhammad Rassya Apriza" class="w-44 h-44 md:w-56 md:h-56 rounded-3xl object-cover profile-img mx-auto">
+    <!-- Profile -->
+    <section id="profile" class="min-h-screen pt-32 pb-20 px-4 container mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-6xl mb-2 uppercase leading-none tracking-wide text-black font-black">
+                    MUHAMMAD RASSYA APRIZA
+                </h1>
+                
+                <div class="bg-yellow-400 border-4 border-black p-5 inline-block font-bold transform rotate-1 shadow-[5px_5px_0px_0px_black] min-w-[300px]">
+                    <div class="space-y-2 text-lg md:text-xl text-black">
+                        <p><span class="uppercase">Tempat Lahir:</span> Tangerang</p>
+                        <p><span class="uppercase">Tanggal Lahir:</span> 17 April 2007</p>
+                        <p><span class="uppercase">Agama:</span> Islam</p>
+                    </div>
+                </div>
+                
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#kontak" class="comic-border bg-red-600 text-white px-8 py-3 text-2xl font-bold uppercase block text-center">Contact</a>
+                    <a href="#cerita" class="comic-border bg-white px-8 py-3 text-2xl font-bold uppercase block text-center">My Story</a>
+                </div>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Muhammad Rassya Apriza</h1>
-            
-            <div class="flex justify-center space-x-4">
-                <a href="https://wa.me/6283873356316"class="bg-white text-blue-700 px-10 py-4 rounded-2xl font-bold shadow-lg hover:bg-blue-50 transition flex items-center">
-                    <i data-lucide="phone" class="w-5 h-5 mr-2"></i> Kontak Saya
+
+            <div class="relative flex justify-center items-center">
+                <div class="comic-border p-3 aspect-square max-w-[680px] w-full relative z-10 transform rotate-2">
+                    <img src="rassya.jpeg" alt="Profile Rassya" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill -->
+    <section id="skill" class="py-24 border-t-8 border-b-8 border-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-6xl text-white text-center mb-16 uppercase tracking-wider underline decoration-yellow-400 decoration-8 underline-offset-8">Skill</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="comic-border p-6 flex flex-col h-full transform -rotate-1"><div class="text-5xl mb-4">📄</div><h3 class="text-2xl mb-3 text-blue-600 uppercase">MS Office</h3><p class="font-bold text-sm text-slate-700 flex-grow">Ahli dalam pengolahan data dan laporan profesional.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform rotate-1"><div class="text-5xl mb-4">🏗️</div><h3 class="text-2xl mb-3 text-orange-600 uppercase">HTML</h3><p class="font-bold text-sm text-slate-700 flex-grow">Membangun kerangka website yang semantik.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform -rotate-1"><div class="text-5xl mb-4">🎨</div><h3 class="text-2xl mb-3 text-indigo-600 uppercase">CSS</h3><p class="font-bold text-sm text-slate-700 flex-grow">Styling responsif dengan Tailwind CSS.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform rotate-1"><div class="text-5xl mb-4">✒️</div><h3 class="text-2xl mb-3 text-pink-600 uppercase">Desain Grafis</h3><p class="font-bold text-sm text-slate-700 flex-grow">Menciptakan identitas visual kreatif.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="pendidikan" class="py-24 border-b-8 border-black">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl mb-16 uppercase tracking-widest italic underline decoration-red-500 decoration-wavy underline-offset-8">Pendidikan</h2>
+            <div class="max-w-4xl mx-auto space-y-12 text-left">
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-yellow-400">2025 - Sekarang</div><div class="comic-border p-8 flex-1"><a href="https://www.gunadarma.ac.id/" target="_blank" class="school-link"><h3 class="text-3xl text-blue-600 mb-1 uppercase font-black">Universitas Gunadarma</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-red-500">2022 - 2025</div><div class="comic-border p-8 flex-1"><a href="https://sman17kabtangerang.sch.id/" target="_blank" class="school-link"><h3 class="text-3xl text-red-600 mb-1 uppercase font-black">SMAN 17 Kab Tangerang</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-blue-500">2019 - 2022</div><div class="comic-border p-8 flex-1"><a href="https://smp.sch.id/sekolah/20603149" target="_blank" class="school-link"><h3 class="text-3xl text-indigo-600 mb-1 uppercase font-black">SMPN 1 Legok</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-green-500">2013 - 2019</div><div class="comic-border p-8 flex-1"><a href="https://data-sekolah.zekolah.id/sekolah/sd-negeri-caringin-iii-9132" target="_blank" class="school-link"><h3 class="text-3xl text-emerald-600 mb-1 uppercase font-black">SDN Caringin 3</h3></a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section id="cerita" class="py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl text-center mb-16 uppercase text-white tracking-wider">Story</h2>
+            <div class="max-w-2xl mx-auto space-y-8">
+                <!-- 4 Momen -->
+                <div class="story-panel"><div class="story-image-container"><img src="sma2.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/1e293b/white?text=Yearbook+SMA'"></div><div class="text-overlay-box"><h3 class="text-blue-600 text-xl uppercase font-black">Yearbook</h3><p class="font-bold">Yearbook menjadi salah satu kenangan paling berharga selama masa SMA. Bersama teman-teman seangkatan, kami mengabadikan momen kebersamaan yang penuh cerita, tawa, dan perjuangan selama tiga tahun menempuh pendidikan. Foto ini menjadi pengingat akan persahabatan dan kenangan yang akan selalu dikenang.</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="sma.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/fbbf24/black?text=Bromo'"></div><div class="text-overlay-box"><h3 class="text-yellow-600 text-xl uppercase font-black">Bromo</h3><p class="font-bold">Perjalanan ke Gunung Bromo bersama teman-teman SMA menjadi pengalaman yang sangat berkesan. Menikmati keindahan alam, menyaksikan matahari terbit, dan menghabiskan waktu bersama membuat perjalanan ini penuh keseruan. Momen ini mempererat persahabatan sekaligus menjadi salah satu kenangan terbaik semasa sekolah..</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="maba.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/4f46e5/white?text=PKKMB'"></div><div class="text-overlay-box"><h3 class="text-indigo-600 text-xl uppercase font-black">PKKMB</h3><p class="font-bold">PKKMB merupakan langkah awal dalam perjalanan sebagai mahasiswa Universitas Gunadarma. Melalui kegiatan ini, saya mendapatkan banyak pengalaman baru, mengenal lingkungan kampus, serta bertemu teman-teman dari berbagai daerah.</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="lebaran.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/b91c1c/white?text=Lebaran'"></div><div class="text-overlay-box"><h3 class="text-red-600 text-xl uppercase font-black">Lebaran</h3><p class="font-bold">Hari Raya Idulfitri adalah waktu yang penuh kebahagiaan dan kebersamaan bersama keluarga. Momen berkumpul, saling memaafkan, dan menikmati waktu bersama menjadi hal yang paling berharga. Foto ini mengabadikan kehangatan keluarga yang selalu menjadi sumber semangat dan kebahagiaan.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-24 container mx-auto px-4">
+        <div class="max-w-2xl mx-auto comic-border p-8">
+            <h2 class="text-5xl text-center mb-8 uppercase font-black">Contact</h2>
+            <form id="heroForm" class="space-y-6">
+                <div><label class="block font-black uppercase text-sm">Nama</label><input type="text" id="name" required class="w-full border-4 border-black p-3 outline-none font-bold"></div>
+                <div><label class="block font-black uppercase text-sm">Gmail</label><input type="email" id="email" required class="w-full border-4 border-black p-3 outline-none font-bold"></div>
+                <div><label class="block font-black uppercase text-sm">Pesan</label><textarea id="message" rows="3" required class="w-full border-4 border-black p-3 outline-none font-bold"></textarea></div>
+                <button type="submit" class="w-full bg-red-600 text-white font-bold text-3xl py-4 uppercase border-4 border-black hover:bg-black transition-all">KIRIM!</button>
+            </form>
+            <div class="mt-8 pt-8 border-t-4 border-dashed border-black">
+                <a href="https://wa.me/628373356316" target="_blank" class="flex items-center justify-center gap-4 w-full bg-[#25D366] text-white font-bold text-2xl py-4 uppercase border-4 border-black hover:bg-white hover:text-[#25D366] transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.18 0-5.767 2.587-5.767 5.767 0 1.026.273 2.001.782 2.871l-1.043 3.81 3.905-1.025c.828.452 1.772.709 2.787.709 3.18 0 5.767-2.587 5.767-5.766 0-3.18-2.587-5.767-5.767-5.767zm0 10.596c-.846 0-1.637-.23-2.316-.627l-.166-.098-1.722.453.46-1.678-.109-.176c-.468-.755-.715-1.625-.715-2.522 0-2.695 2.194-4.889 4.889-4.889 2.694 0 4.889 2.194 4.889 4.889 0 2.694-2.195 4.889-4.889 4.889z"/></svg>
+                    WHATSAPP ME!
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Konten Utama -->
-    <main class="max-w-4xl mx-auto px-6 py-16 space-y-24">
-        
-        <!-- Section Profil -->
-        <section id="about" class="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-                <h2 class="text-3xl font-bold mb-6 flex items-center tracking-tight text-slate-800">
-                    <i data-lucide="user" class="mr-3 text-blue-600"></i> Profil Peribadi
-                </h2>
-                
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="info-row">
-                        <span class="w-1/3 text-slate-400 text-sm font-semibold uppercase tracking-wider">Tempat Lahir</span>
-                        <span class="w-2/3 text-slate-700 font-bold">Tangerang</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="w-1/3 text-slate-400 text-sm font-semibold uppercase tracking-wider">Tanggal Lahir</span>
-                        <span class="w-2/3 text-slate-700 font-bold">17 April 2007</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="w-1/3 text-slate-400 text-sm font-semibold uppercase tracking-wider">Agama</span>
-                        <span class="w-2/3 text-slate-700 font-bold">Islam</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="w-1/3 text-slate-400 text-sm font-semibold uppercase tracking-wider">Lokasi</span>
-                        <span class="w-2/3 text-slate-700 font-bold">Indonesia</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-blue-600 p-8 rounded-[2rem] text-white shadow-xl relative overflow-hidden h-full flex flex-col justify-center">
-                <div class="relative z-10">
-                    <h3 class="text-xl font-bold mb-2">Status Saat Ini</h3>
-                    <p class="text-blue-100 text-sm mb-4">Sedang menempuh pendidikan tinggi.</p>
-                    <div class="flex items-center text-2xl font-bold">
-                        <i data-lucide="graduation-cap" class="mr-2"></i> Universitas Gunadarma
-                    </div>
-                    <p class="text-xs mt-2 opacity-80 uppercase tracking-wider font-semibold text-blue-200 tracking-[0.2em]">Manajemen</p>
-                </div>
-                <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-white opacity-10 rounded-full"></div>
-            </div>
-        </section>
-
-        <!-- Section Kemahiran -->
-        <section id="skills" class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
-            <h2 class="text-2xl font-bold mb-10 text-center text-slate-800">Kemahiran Utama</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="p-6 border border-slate-100 rounded-3xl text-center hover:shadow-md hover:border-blue-200 transition-all cursor-default group">
-                    <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="code" class="w-7 h-7 text-orange-500"></i>
-                    </div>
-                    <span class="text-base font-bold text-slate-700">HTML</span>
-                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">Struktur Web</p>
-                </div>
-                
-                <div class="p-6 border border-slate-100 rounded-3xl text-center hover:shadow-md hover:border-blue-200 transition-all cursor-default group">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="palette" class="w-7 h-7 text-blue-500"></i>
-                    </div>
-                    <span class="text-base font-bold text-slate-700">CSS</span>
-                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">Desain Web</p>
-                </div>
-
-                <div class="p-6 border border-slate-100 rounded-3xl text-center hover:shadow-md hover:border-blue-200 transition-all cursor-default group">
-                    <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="file-text" class="w-7 h-7 text-emerald-600"></i>
-                    </div>
-                    <span class="text-base font-bold text-slate-700">Microsoft Office</span>
-                    <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider">Produktivitas</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Pendidikan -->
-        <section id="education">
-            <h2 class="text-3xl font-bold mb-12 text-center tracking-tight text-slate-800">Riwayat Pendidikan</h2>
-            
-            <div class="max-w-2xl mx-auto ml-8 md:mx-auto space-y-4">
-                <div class="education-card p-5 pl-8 timeline-dot flex items-center justify-between rounded-2xl">
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800">Universitas Gunadarma</h3>
-                        <p class="text-blue-600 text-xs font-bold uppercase tracking-wider">Perguruan Tinggi - Manajemen</p>
-                    </div>
-                    <i data-lucide="award" class="w-5 h-5 text-blue-400 opacity-50"></i>
-                </div>
-
-                <div class="education-card p-5 pl-8 timeline-dot flex items-center justify-between rounded-2xl">
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800">SMA Negeri 17</h3>
-                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Sekolah Menengah Atas</p>
-                    </div>
-                </div>
-
-                <div class="education-card p-5 pl-8 timeline-dot flex items-center justify-between rounded-2xl">
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800">SMP Negeri 1 Legok</h3>
-                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Sekolah Menengah Pertama</p>
-                    </div>
-                </div>
-
-                <div class="education-card p-5 pl-8 timeline-dot flex items-center justify-between rounded-2xl">
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800">SD Negeri Caringin 3</h3>
-                        <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Sekolah Dasar</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Cerita -->
-        <section id="story" class="space-y-12">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-800">Cerita & Momen</h2>
-                <p class="text-slate-500 mt-2">Kumpulan perjalanan berharga dalam hidup saya.</p>
-            </div>
-
-            <div class="grid gap-16">
-                <!-- Bromo -->
-                <div class="flex flex-col md:flex-row gap-8 items-center">
-                    <div class="w-full md:w-1/2 story-img-container shadow-lg">
-                        <img src="sma.jpeg" alt="Bromo bersama teman SMA">
-                    </div>
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <span class="text-blue-600 font-bold text-sm uppercase tracking-widest flex items-center">
-                            <i data-lucide="mountain" class="w-4 h-4 mr-2"></i> Bromo
-                        </span>
-                        <h3 class="text-2xl font-bold text-slate-800">Kenangan Dingin di Bromo</h3>
-                        <p class="text-slate-600 leading-relaxed italic">
-                            Momen tak terlupakan saat berfoto bersama teman-teman sekelas SMA di tengah kemegahan Gunung Bromo. Tawa dan kedinginan yang kami bagi bersama menjadi simbol eratnya persahabatan sebelum kami menempuh jalan masing-masing.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Mahasiswa Baru -->
-                <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                    <div class="w-full md:w-1/2 story-img-container shadow-lg">
-                        <img src="maba.jpeg" alt="Maba Universitas Gunadarma">
-                    </div>
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <span class="text-blue-600 font-bold text-sm uppercase tracking-widest flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2"></i> Mahasiswa Baru
-                        </span>
-                        <h3 class="text-2xl font-bold text-slate-800">Mahasiswa Baru</h3>
-                        <p class="text-slate-600 leading-relaxed italic">
-                            Awal babak baru di Universitas Gunadarma. Berfoto bersama teman-teman sekelas saat masa perkenalan kampus, penuh ambisi dan rasa optimis untuk menghadapi tantangan di dunia perkuliahan.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Lebaran -->
-                <div class="flex flex-col md:flex-row gap-8 items-center">
-                    <div class="w-full md:w-1/2 story-img-container shadow-lg">
-                        <img src="lebaran.jpeg" alt="Keluarga Lebaran">
-                    </div>
-                    <div class="w-full md:w-1/2 space-y-4">
-                        <span class="text-blue-600 font-bold text-sm uppercase tracking-widest flex items-center">
-                            <i data-lucide="heart" class="w-4 h-4 mr-2"></i> Idul Fitri
-                        </span>
-                        <h3 class="text-2xl font-bold text-slate-800">Lebaran</h3>
-                        <p class="text-slate-600 leading-relaxed italic">
-                            Momen suci Idul Fitri bersama keluarga tercinta. Tidak ada tempat yang lebih tenang selain di tengah pelukan keluarga, merayakan kemenangan setelah sebulan penuh berpuasa dengan penuh syukur.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-100 py-12 px-6 text-center">
-        <div class="flex justify-center space-x-6 mb-6">
-            <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="github" class="w-5 h-5"></i></a>
-            <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-        </div>
-        <!-- Update Tahun Copyright ke 2026 -->
-        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">© 2026 Muhammad Rassya Apriza</p>
-    </footer>
-
-    <!-- Logic Script -->
     <script>
-        /**
-         * Inisialisasi ikon Lucide
-         */
-        function initIcons() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        const audio = document.getElementById('bg-audio');
+        const musicBtns = [document.getElementById('music-btn'), document.getElementById('music-btn-mobile')];
+        let isPlaying = false;
+        
+        musicBtns.forEach(btn => btn.addEventListener('click', () => {
+            if(!isPlaying) {
+                audio.play();
+                isPlaying = true;
+                musicBtns.forEach(b => b.innerText = "SOUND: 🔊");
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicBtns.forEach(b => b.innerText = "SOUND: 🔇");
             }
-        }
-
-        /**
-         * Window Load Handler
-         */
-        window.addEventListener('load', () => {
-            initIcons();
-        });
+        }));
     </script>
 </body>
 </html>
